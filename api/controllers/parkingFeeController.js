@@ -1,12 +1,14 @@
 'use strict';
 
-var mongoose = require('mongoose'),
-	ParkingFee = mongoose.model('ParkingFee');
+var mongoose = require('mongoose');
+	// ParkingFee = mongoose.model('ParkingFee');
 
 exports.checkin = function(req, res) {
-	res.json('hello');
+	var mall_id = request.params.id;
+	console.log("check in" + mall_id);
 };
 
 exports.checkprice = function(req, res) {
-	res.json('good bye');
+	var mall_id = request.params.id;
+	console.log("check price" + mall_id);
 };
