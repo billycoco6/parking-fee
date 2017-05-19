@@ -3,9 +3,9 @@
 module.exports = function(app) {
 	var parkingFee = require('../controllers/parkingFeeController');
 
-	app.route('/mall/:id/checkin')
+	app.route('/mall/:mall_id/checkin')
 		.post(parkingFee.checkin);
 
-	app.route('/mall/:id/checkprice')
+	app.route('/mall/:mall_id/checkprice')
 		.get(parkingFee.checkprice);
 }
