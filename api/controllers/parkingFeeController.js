@@ -5,10 +5,9 @@ var mongoose = require('mongoose');
 
 exports.checkin = function(req, res) {
 	var mall_id = request.params.mall_id;
-	console.log("check in" + mall_id);
+	res.json("hello");
 };
 
 exports.checkprice = function(req, res) {
 	var mall_id = request.params.mall_id;
-	console.log("check price" + mall_id);
 };
