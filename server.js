@@ -20,7 +20,8 @@ mongoose.model('parkingfees',
             rate: [{
               duration: Number,
               cost: Number
-            }]
+            }],
+            entry_time: Date
           }));
 
 var parkingfees = mongoose.model('parkingfees');
@@ -52,9 +53,20 @@ router.get('/mall/:mall_id/checkprice', function(req, res) {
   });
 });
 
-// router.post('/mall/:mall_id/checkin', function(req, res) {
+router.post('/mall/:mall_id/checkin', function(req, res) {
+  parkingfees.find({mall_id: req.params.mall_id}, function(err, data) {
+    if (err)
+      res.send(err);
+    data.entry_time = req.body.entryTime;
 
-// });
+    data.save(function(err) {
+      if (err)
+        res.send(err);
+
+      res.json("Checkin completed");
+    });
+  });
+});
 
 
 
