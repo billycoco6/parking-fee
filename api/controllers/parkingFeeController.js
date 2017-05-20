@@ -16,7 +16,7 @@ var mongoose = require('mongoose'),
 					}), 'parkingfees');
 
 exports.test = function(req, res) {
-	console.log("helloooo");
+	res.json("hello");
 	// ParkingFee.find({}, function(err, data) { console.log(err, data, data.length); });
 };
 
