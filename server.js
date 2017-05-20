@@ -45,7 +45,7 @@ router.get('/', function(req, res) {
 });
 
 router.get('/mall/:mall_id/checkprice', function(req, res) {
-  parkingfees.findById(req.params.mall_id, function(err, data) {
+  parkingfees.find({mall_id: req.params.mall_id}, function(err, data) {
     if (err)
       res.send(err);
     res.json(data);
