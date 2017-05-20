@@ -39,7 +39,9 @@ router.use(function(req, res, next) {
 
 router.get('/', function(req, res) {
   parkingfees.find({}, function(err, data) { 
-    res.json({message: 'This is a good sign'}); 
+    if (err)
+      res.send(err);
+    res.json(data);
   });
 });
 
