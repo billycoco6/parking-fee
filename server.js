@@ -21,7 +21,7 @@ mongoose.model('parkingfees',
           }));
 
 var parkingfees = mongoose.model('parkingfees');
-parkingfees.find({}, function(err, data) { console.log(err, data, data.length); });
+parkingfees.find({mall_id: 2}, function(err, data) { console.log(err, data, data.length); });
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());

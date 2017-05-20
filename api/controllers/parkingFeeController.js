@@ -6,7 +6,13 @@ var mongoose = require('mongoose'),
 exports.test = function(req, res) {
 	var parkingfees = mongoose.model('parkingfees');
 	// parkingfees.find({}, function(err, data) { console.log(err, data, data.length); });
-	res.json(parkingfees);
+  	db.collection(parkingfees).find({}).toArray(function(err, docs) {
+   		if (err) {
+     		handleError(res, err.message, "Failed to get docs.");
+    	} else {
+      		res.status(200).json(docs);
+    	}
+  	});
 };
 
 exports.checkin = function(req, res) {
