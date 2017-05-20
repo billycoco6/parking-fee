@@ -20,8 +20,7 @@ mongoose.model('parkingfees',
             rate: [{
               duration: Number,
               cost: Number
-            }],
-            entry_time: Date
+            }]
           }));
 
 var parkingfees = mongoose.model('parkingfees');
@@ -67,7 +66,6 @@ router.post('/mall/:mall_id/checkin', function(req, res) {
     });
   });
 });
-
 
 
 app.use(router);
