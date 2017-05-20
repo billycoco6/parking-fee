@@ -36,7 +36,6 @@ router.use(function(req, res, next) {
     next();
 });
 
-
 router.get('/', function(req, res) {
   parkingfees.find({}, function(err, data) { 
     if (err)
@@ -44,6 +43,20 @@ router.get('/', function(req, res) {
     res.json(data);
   });
 });
+
+router.get('/mall/:mall_id/checkprice', function(req, res) {
+  parkingfees.findById(req.params.mall_id, function(err, data) {
+    if (err)
+      res.send(err);
+    res.json(data);
+  });
+});
+
+// router.post('/mall/:mall_id/checkin', function(req, res) {
+
+// });
+
+
 
 app.use(router);
 app.listen(port);
