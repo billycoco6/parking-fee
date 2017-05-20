@@ -35,18 +35,10 @@ router.use(function(req, res, next) {
     next();
 });
 
-router.get('/', function(req, res) {
-  parkingfees.find({}, function(err, data) { 
-    if (err)
-      res.send(err);
-    res.json(data);
-  });
-});
-
 router.get('/mall/:mall_id/checkprice', function(req, res) {
   parkingfees.find({mall_id: req.params.mall_id}, function(err, data) {
     if (err)
-      res.send(err);
+      return res.send(err);
     
     var current_fee = 0;
 
@@ -63,7 +55,7 @@ router.get('/mall/:mall_id/checkprice', function(req, res) {
     };
 
     if (parking_time < data[0].free_duration) {
-      res.json("Current fee = " + current_fee);
+      return res.json("Current fee = " + current_fee);
     }
 
     // Whether the mins exceed the hour limit
@@ -78,13 +70,12 @@ router.get('/mall/:mall_id/checkprice', function(req, res) {
       var exceed_hour = parking_time - data[0].rate[rate_array_length].duration;
       current_fee += data[0].rate[rate_array_length].cost;
       current_fee += (exceed_hour/60) * data[0].long_hour_fee;
-      res.json("Current fee = " + current_fee);
+      return res.json("Current fee = " + current_fee);
     }
     else {
       for (var each_rate of data[0].rate) {
-        console.log(each_rate.duration);
         if (parking_time <= each_rate.duration) {
-          res.json("Current fee = " + each_rate.cost);
+          return res.json("Current fee = " + each_rate.cost);
           break;
         }
       }
@@ -103,7 +94,7 @@ router.post('/mall/:mall_id/checkin', function(req, res) {
       if (err)
         res.send(err);
 
-      res.json("Checkin completed");
+      return res.json("Checkin completed");
     });
   });
 });
