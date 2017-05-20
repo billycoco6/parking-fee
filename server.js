@@ -58,14 +58,14 @@ router.post('/mall/:mall_id/checkin', function(req, res) {
     if (err)
       res.send(err);
     data.entry_time = req.body.entryTime;
+    console.log(data);
 
-    // data.save(function(err) {
-    //   if (err)
-    //     res.send(err);
+    data.save(function(err) {
+      if (err)
+        res.send(err);
 
-    //   res.json("Checkin completed");
-    // });
-    res.json(data.entry_time);
+      res.json("Checkin completed");
+    });
   });
 });
 
