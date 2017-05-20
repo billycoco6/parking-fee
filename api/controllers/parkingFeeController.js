@@ -16,13 +16,8 @@ var mongoose = require('mongoose'),
 					}), 'parkingfees');
 
 exports.test = function(req, res) {
-	ParkingFee.find({}, function(err, bookings) {
-	async.each(parkings, parking, function(parking, next) {
-		console.log(util.format('%s', parking.mall_name));
-		}, function(err) {
-			console.log('done');
-		});
-	});
+	console.log("helloooo");
+	// ParkingFee.find({}, function(err, data) { console.log(err, data, data.length); });
 };
 
 exports.checkin = function(req, res) {
