@@ -28,10 +28,6 @@ mongoose.model('parkingfees',
           }));
 
 var parkingfees = mongoose.model('parkingfees');
-// parkingfees.find({}, function(err, data) { console.log(err, data, data.length); });
-
-// var routes = require('./api/routes/parkingFeeRoutes');
-// routes(app);
 
 var router = express.Router();
 
