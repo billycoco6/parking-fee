@@ -35,7 +35,7 @@ router.get('/', function(req, res)) {
   res.json("Welcomeee")
 }
 
-
+app.use(router);
 app.listen(port);
 
 console.log('The API server started on: ' + port);
