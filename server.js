@@ -32,13 +32,15 @@ var parkingfees = mongoose.model('parkingfees');
 var router = express.Router();
 
 router.use(function(req, res, next) {
-    console.log('Something is happening.');
+    console.log('===== Router =====');
     next();
 });
 
 
 router.get('/', function(req, res) {
-  res.json("Welcomeee")
+  parkingfees.find({}, function(err, data) { 
+    res.json({message: 'This is a good sign'}); 
+  });
 });
 
 app.use(router);
