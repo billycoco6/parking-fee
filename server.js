@@ -22,6 +22,18 @@ mongoose.connect(uristring, function (err, res) {
       console.log ('Succeeded connected to: ' + uristring);
       }
     });
+mongoose.model('parkingfees',
+          new Schema({
+            mall_id: Number,
+            mall_name: String,
+            rounding_time: Number,
+            fee_period: Number,
+            long_hour_fee: Number,
+            rate: [{
+              duration: Number,
+              cost: Number
+            }]
+          }), 'parkingfees');
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());

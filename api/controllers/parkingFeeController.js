@@ -1,21 +1,10 @@
 'use strict';
 
 var mongoose = require('mongoose'),
-	ParkingFee = mongoose.model('ParkingFee',
-					new mongoose.Schema({
-						mall_id: Number,
-						mall_name: String,
-						rounding_time: Number,
-						fee_period: Number,
-						long_hour_fee: Number,
-						rate: [{
-							duration: Number,
-							cost: Number
-						}]
-					}), 'parkingfees');
+	Schema = mongoose.Schema;
 
 exports.test = function(req, res) {
-	ParkingFee.find({}).exec(function(err, result) {
+	parkingfees.find({}).exec(function(err, result) {
       if (!err) {
         // handle result
         res.json("no err");
