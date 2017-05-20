@@ -4,15 +4,8 @@ var mongoose = require('mongoose'),
 	Schema = mongoose.Schema;
 
 exports.test = function(req, res) {
-	parkingfees.find({}).exec(function(err, result) {
-      if (!err) {
-        // handle result
-        res.json("no err");
-      } else {
-        // error handling
-        res.json("err");
-      };
-    });
+	var parkingfees = mongoose.model('parkingfees');
+	res.json("hello");
 };
 
 exports.checkin = function(req, res) {
