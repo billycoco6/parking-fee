@@ -3,7 +3,7 @@ var express = require('express'),
 	port = process.env.PORT || 3000,
 	mongoose = require('mongoose'),
 	bodyParser = require('body-parser'),
-	http = require('http'),;
+	http = require('http');
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
@@ -24,16 +24,22 @@ mongoose.model('parkingfees',
           }));
 
 var parkingfees = mongoose.model('parkingfees');
-parkingfees.find({}, function(err, data) { console.log(err, data, data.length); });
+// parkingfees.find({}, function(err, data) { console.log(err, data, data.length); });
 
 // var routes = require('./api/routes/parkingFeeRoutes');
 // routes(app);
 
 var router = express.Router();
 
-router.get('/', function(req, res)) {
+router.use(function(req, res, next) {
+    console.log('Something is happening.');
+    next();
+});
+
+
+router.get('/', function(req, res) {
   res.json("Welcomeee")
-}
+});
 
 app.use(router);
 app.listen(port);
