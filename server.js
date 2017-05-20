@@ -21,7 +21,7 @@ mongoose.model('parkingfees',
               duration: Number,
               cost: Number
             }],
-            entry_time: Date
+            entry_time: { type: Date }
           }));
 
 var parkingfees = mongoose.model('parkingfees');
