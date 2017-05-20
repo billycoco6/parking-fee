@@ -3,7 +3,10 @@ var express = require('express'),
 	port = process.env.PORT || 3000,
 	mongoose = require('mongoose'),
 	bodyParser = require('body-parser'),
-	http = require('http');
+	http = require('http'),;
+
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
 
 mongoose.Promise = global.Promise;
 mongoose.connect('mongodb://billy:1234@ds111489.mlab.com:11489/heroku_0jk9k8r3');
@@ -21,13 +24,17 @@ mongoose.model('parkingfees',
           }));
 
 var parkingfees = mongoose.model('parkingfees');
-parkingfees.find({mall_id: 2}, function(err, data) { console.log(err, data, data.length); });
+parkingfees.find({}, function(err, data) { console.log(err, data, data.length); });
 
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.json());
+// var routes = require('./api/routes/parkingFeeRoutes');
+// routes(app);
 
-var routes = require('./api/routes/parkingFeeRoutes');
-routes(app);
+var router = express.Router();
+
+router.get('/', function(req, res)) {
+  res.json("Welcomeee")
+}
+
 
 app.listen(port);
 
