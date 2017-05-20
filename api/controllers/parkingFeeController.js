@@ -5,8 +5,8 @@ var mongoose = require('mongoose'),
 
 exports.test = function(req, res) {
 	var parkingfees = mongoose.model('parkingfees');
-	console.log(parkingfees);
-	res.json("hello");
+	// parkingfees.find({}, function(err, data) { console.log(err, data, data.length); });
+	res.json(parkingfees);
 };
 
 exports.checkin = function(req, res) {
