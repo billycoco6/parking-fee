@@ -57,7 +57,7 @@ router.post('/mall/:mall_id/checkin', function(req, res) {
   parkingfees.find({mall_id: req.params.mall_id}, function(err, data) {
     if (err)
       res.send(err);
-    // data.entry_time = req.body.entryTime;
+    data.entry_time = req.body.entryTime;
 
     // data.save(function(err) {
     //   if (err)
