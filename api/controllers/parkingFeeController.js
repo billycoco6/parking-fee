@@ -5,6 +5,7 @@ var mongoose = require('mongoose'),
 
 exports.test = function(req, res) {
 	var parkingfees = mongoose.model('parkingfees');
+	console.log(parkingfees);
 	res.json("hello");
 };
 
