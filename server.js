@@ -65,7 +65,7 @@ router.post('/mall/:mall_id/checkin', function(req, res) {
 
     //   res.json("Checkin completed");
     // });
-    res.json(req.body.entryTime);
+    res.json(data.entry_time);
   });
 });
 
